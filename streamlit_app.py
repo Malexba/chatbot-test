@@ -1,7 +1,25 @@
 import streamlit as st
 import ollama
 
-!ollama run ollama3
+import subprocess
+
+# Command to be executed
+command = "ollama run ollama3"
+
+try:
+    # Execute the command
+    process = subprocess.run(command, shell=True, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    
+    # Get the output and error (if any)
+    output = process.stdout.decode()
+    error = process.stderr.decode()
+    
+    # Print the output and error
+    print("Output:", output)
+    print("Error:", error)
+except subprocess.CalledProcessError as e:
+    print(f"Command '{e.cmd}' returned non-zero exit status {e.returncode}.")
+    print("Error output:", e.stderr.decode())
 
 st.title("Local Llama3 Chatbot!🤖")
 

@@ -1,6 +1,8 @@
 import streamlit as st
 import ollama
 
+!ollama run ollama3
+
 st.title("Local Llama3 Chatbot!🤖")
 
 system_prompt = "You are a helpful assistant"
